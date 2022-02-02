@@ -42,6 +42,16 @@ a {
     color: #000;
 }
 
+.noSelect {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 /* MENU */
 .menu {
     position: fixed;
@@ -681,5 +691,190 @@ a {
 
 /* 624px */
 @media only screen and (max-width: 39em) {
-    
+    body {
+        margin-left: 0;
+        background: linear-gradient(-50deg, transparent, #fff1),
+            url(/img/bg.jpg) no-repeat center 5rem / 70rem, #000000e9;
+    }
+    .main {
+        grid-template-rows: var(--menu-btn-size) 65rem max-content max-content;
+        grid-template-columns: 100%;
+        gap: 0;
+    }
+    .menu {
+        min-height: initial;
+        flex-direction: row-reverse;
+        width: 100%;
+        backdrop-filter: none;
+        z-index: 2;
+        position: absolute;
+    }
+
+    #menubtn:checked ~ .menu {
+        width: 100%;
+        backdrop-filter: blur(5px);
+        border-bottom: 1px solid #fff2;
+        border-left: none;
+        background-color: #0009;
+    }
+
+    .menu__btn {
+        width: var(--menu-btn-size);
+    }
+    .menu__social {
+        flex-direction: row;
+        margin-bottom: 0;
+        align-items: center;
+    }
+    .menu__social .menu__slink {
+        transform: rotateZ(0deg);
+        display: none;
+    }
+    .menu__social .menu__slink--big {
+        opacity: 1;
+        position: static;
+        font-size: 2.4rem;
+    }
+
+    .nav {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: var(--menu-btn-size);
+        align-self: center;
+        justify-self: center;
+        margin: 0;
+        width: 100vw;
+        text-align: center;
+        max-height: 0;
+        transition: max-height 0.4s linear, opacity 0.4s;
+        padding: 3rem;
+    }
+    .nav__links {
+        flex-direction: column;
+        margin: 0;
+    }
+    .nav__links a,
+    .nav__search {
+        display: inline-block;
+        padding: 1rem;
+        font-size: 2.8rem;
+        color: var(--color-white);
+    }
+
+    .nav__search {
+        margin-top: 2rem;
+    }
+
+    .nav__links a.active {
+        border: none;
+        color: var(--color-primary);
+    }
+    #menubtn:checked ~ .nav {
+        opacity: 1;
+        visibility: visible;
+        backdrop-filter: blur(5px);
+        border-bottom: 1px solid #fff2;
+        background-color: #0005;
+        max-height: 100%;
+        z-index: 1;
+    }
+
+    .hero-list {
+        grid-column: 1 / 2;
+        grid-row: 2/3;
+        align-self: flex-end;
+        margin: 0 var(--main-margin-left) 0 auto;
+        text-align: right;
+        padding-bottom: 1rem;
+    }
+
+    .hero__bar {
+        margin: 0.8rem 0;
+    }
+    .hero__bar::after {
+        right: 0;
+    }
+
+    .hero__bar {
+        display: block;
+    }
+    .hero__collection-name {
+        margin: 0.2rem 0 0;
+    }
+
+    .hero-content {
+        grid-column: 1 / 2;
+        grid-row: 2/3;
+        margin: 4rem;
+    }
+
+    .hero__title {
+        width: 100%;
+        font-size: 5.2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .hero__details {
+        letter-spacing: 0px;
+        width: 80%;
+        margin: 0 auto;
+        color: var(--color-white-07);
+    }
+    .events {
+        grid-row: 3 / 4;
+        padding: var(--main-margin-left);
+        border-bottom: 1px solid #fff2;
+    }
+
+    .events__container {
+        gap: 3rem;
+    }
+
+    .events__event {
+        flex: 1;
+        margin: 2rem 0;
+    }
+    .news {
+        grid-row: 4 / 5;
+        margin-left: 0;
+        padding: var(--main-margin-left);
+        flex-direction: row-reverse;
+    }
+
+    .news__new {
+        justify-content: center;
+        padding: 0;
+        padding-right: 3rem;
+    }
+
+    .news__img {
+        width: 20vw;
+        object-fit: contain;
+    }
+    .news__details {
+        margin: 2rem 0 1rem;
+    }
+}
+
+/* 448px */
+@media only screen and (max-width: 28em) {
+    body {
+        background: linear-gradient(-50deg, transparent, #fff1),
+            url(/img/bg.jpg) no-repeat center 15rem / 60rem, #000000e9;
+    }
+
+    .events__event {
+        flex: none;
+        width: 100%;
+    }
+}
+
+/* 400px */
+@media only screen and (max-width: 25em) {
+    .hero__details {
+        width: 90%;
+    }
 }
